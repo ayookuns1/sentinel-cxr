@@ -23,3 +23,4 @@ def test_git_commit_returns_a_string():
 
 def test_fail() -> None:
     assert 1 == 3
+
