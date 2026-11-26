@@ -20,3 +20,6 @@ def test_seed_everything_makes_randomness_repeatable():
 
 def test_git_commit_returns_a_string():
     assert isinstance(git_commit(), str)
+
+def test_fail() -> None:
+    assert 1 == 2
