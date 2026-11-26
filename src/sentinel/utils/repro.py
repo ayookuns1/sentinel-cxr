@@ -13,14 +13,13 @@ def seed_everything(seed: int) -> None:
     """Seed every random number generator we use, so a run can be repeated."""
     random.seed(seed)
     np.random.seed(seed)
-    os.environ['PYTHONHASHSEED'] = str(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
     try:
         import torch
     except ImportError:
         return
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
-   
 
 
 def git_commit() -> str:

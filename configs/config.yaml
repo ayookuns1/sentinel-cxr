@@ -1,0 +1,7 @@
+defaults:
+  - data : chexpert
+  - model: convnext_tiny
+  - train: default
+  - _self_
+
+seed : 42

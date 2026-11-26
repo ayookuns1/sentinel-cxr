@@ -5,6 +5,7 @@ description = "Trustworthy chest X-ray triage: calibrated, uncertainty-aware, DI
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "hydra-core>=1.3.8",
     "numpy>=2.4.6",
     "pandas>=3.1.1",
     "pyyaml>=6.0.3",
@@ -20,11 +21,32 @@ packages = ["src/sentinel"]
 [dependency-groups]
 dev = [
     "mypy>=2.4.1",
+    "pandas-stubs>=3.1.0.261029",
     "pre-commit>=4.7.0",
     "pytest>=9.2.0",
     "ruff>=0.17.4",
+    "types-pyyaml>=6.0.12.20261113",
 ]
 
 [tool.pytest.ini_options]
 test_paths = ["tests"]
 addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+# E/F: classic errors, I: import sorting, B: likely bugs, UP: modern syntax,
+# SIM: simplifications, N: naming conventions
+select = ["E", "F", "I", "B", "UP", "SIM", "N"]
+
+[tool.mypy]
+python_version = "3.11"
+disallow_untyped_defs = true     # every function needs type hints
+warn_unused_ignores = true
+warn_return_any = true
+ignore_missing_imports = true    # some libraries ship without type info
+
+[project.scripts]
+sentinel-train = "sentinel.train:main"
